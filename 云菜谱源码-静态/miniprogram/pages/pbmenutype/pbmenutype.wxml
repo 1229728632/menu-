@@ -1,0 +1,36 @@
+<view class='adminPerson'>
+	<!-- 菜谱分类列表 (菜谱分类列表) -->
+	<view class='cpfllb'>
+		<view wx:for="{{sortArr}}" wx:key="_id">
+			<text class="txt">{{item.adds}}</text>
+			<text class="btn" style="background:#f1613c"  data-index="{{index}}"  data-id="{{item._id}}" bindtap="delSort">删除</text>
+			<text class="btn" style="background:#4578ff" bindtap="updateSort" data-id="{{item._id}}" data-name="{{item.adds}}">修改</text>
+		</view>
+		<!-- 添加按钮 -->
+		<view class="fladd" bindtap="addSort">
+			<image src="/static/personal/add.png"></image>
+		</view>
+
+	</view>
+	<!--    页面 （菜谱添加分类） -->
+	<form bindsubmit="myaddSort">
+		<view class='cptjfl'>
+			<mp-cell prop="mobile" ext-class=" weui-cell_vcode" wx:if="{{isShowAdd}}">
+				<!-- 输入菜谱分类 -->
+				<input class="weui-input" name="adds" placeholder="输入菜谱分类" />
+				<button slot="footer" class="weui-vcode-btn" form-type="submit">添加</button>
+			</mp-cell>
+		</view>
+	</form>
+	<!-- 修改页面  （菜谱修改分类）-->
+	<form bindsubmit="myupdateSort">
+		<view class='cpxgfl'>
+			<mp-cell prop="mobile" ext-class=" weui-cell_vcode" wx:if="{{isupdateSort}}">
+				<!-- 输入菜谱分类 -->
+				<input value="" name="updates" class="weui-input" value="{{name}}" />
+				<button slot="footer" class="weui-vcode-btn" form-type="submit" bindtap="updateItem">修改</button>
+			</mp-cell>
+		</view>
+	</form>
+
+</view>
